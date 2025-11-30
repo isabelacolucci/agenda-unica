@@ -1,5 +1,4 @@
 import NextAuth from "next-auth"
-import { PrismaAdapter } from "@auth/prisma-adapter"
 import Credentials from "next-auth/providers/credentials"
 import { ZodError } from "zod"
 import { prisma } from "@/lib/prisma"
@@ -8,7 +7,6 @@ import { verifyPassword } from "@/lib/auth/password"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const { handlers, signIn, signOut, auth } = (NextAuth as any)({
-  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
       credentials: {

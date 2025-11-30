@@ -5,8 +5,11 @@ CREATE TABLE "public"."providers" (
     "business_name" TEXT NOT NULL,
     "public_url" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "address" TEXT NOT NULL,
+    "reset_token" TEXT,
+    "reset_token_expiry" TIMESTAMP(3),
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -55,7 +58,6 @@ CREATE TABLE "public"."appointments" (
     "updated_at" TIMESTAMP(3) NOT NULL,
     "provider_id" INTEGER NOT NULL,
     "service_id" INTEGER NOT NULL,
-    "schedule_id" INTEGER,
 
     CONSTRAINT "appointments_pkey" PRIMARY KEY ("id")
 );
@@ -77,6 +79,3 @@ ALTER TABLE "public"."appointments" ADD CONSTRAINT "appointments_provider_id_fke
 
 -- AddForeignKey
 ALTER TABLE "public"."appointments" ADD CONSTRAINT "appointments_service_id_fkey" FOREIGN KEY ("service_id") REFERENCES "public"."services"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "public"."appointments" ADD CONSTRAINT "appointments_schedule_id_fkey" FOREIGN KEY ("schedule_id") REFERENCES "public"."schedules"("id") ON DELETE SET NULL ON UPDATE CASCADE;

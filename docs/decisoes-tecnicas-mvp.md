@@ -24,8 +24,8 @@
 - Justificativa: Relacional, robusto, ótimo para relatórios e relacionamentos complexos.
 
 ## 6. Autenticação e Autorização
-- **Sessions + Cookies** (Auth.js)
-- Justificativa: Mais seguro para web, integração nativa com Next.js, menos risco de vazamento de credenciais.
+- **JWT + Cookies** (Auth.js com Credentials Provider)
+- Justificativa: Autenticação stateless usando JWT, sem necessidade de tabelas de sessão no banco de dados. Mais simples para MVP, com credenciais armazenadas diretamente na tabela Provider (email/senha com bcrypt).
 
 ## 7. Deploy e Infraestrutura
 - **Vercel** (deploy Next.js)
@@ -35,13 +35,24 @@
 
 ## 8. Bibliotecas Principais
 - **ORM:** Prisma
-- **Autenticação:** Auth.js (next-auth v5+)
+- **Autenticação:** Auth.js (next-auth v5+) com Credentials Provider
+- **Hash de Senhas:** bcrypt
 - **Ícones:** Lucide
 - **UI:** shadcn/ui (Radix UI + Tailwind)
 - **Validação:** zod
 - **E-mail:** nodemailer + SMTP MailTrap
 
-## 9. DevOps e Observabilidade
+## 9. Modelo de Dados
+O sistema utiliza 4 tabelas principais no PostgreSQL:
+
+1. **providers**: Dados dos profissionais/estabelecimentos, incluindo credenciais de autenticação (email/senha) e token de recuperação de senha
+2. **services**: Serviços oferecidos pelos profissionais
+3. **schedules**: Horários de funcionamento por dia da semana
+4. **appointments**: Agendamentos realizados pelos clientes
+
+**Nota**: O sistema não utiliza as tabelas padrão do Auth.js (Account, Session, User, VerificationToken) pois a autenticação é feita diretamente com a tabela `providers` usando JWT.
+
+## 10. DevOps e Observabilidade
 - Não implementado no MVP inicial
 - Justificativa: Foco em agilidade e entrega rápida
 

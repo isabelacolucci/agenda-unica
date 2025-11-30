@@ -56,27 +56,18 @@ erDiagram
     Provider ||--o{ Schedule : defines
     Provider ||--o{ Appointment : receives
     Service ||--o{ Appointment : booked_for
-    Schedule ||--o{ Appointment : available_for
-    Appointment {
-        int id PK
-        date date
-        time time
-        string status "scheduled, completed, canceled, no_show"
-        string clientName
-        string clientEmail
-        string clientPhone
-        string notes
-        datetime created_at
-        datetime updated_at
-    }
+    
     Provider {
         int id PK
         string name
         string business_name
         string public_url
         string email
+        string password
         string phone
         string address
+        string reset_token
+        datetime reset_token_expiry
         datetime created_at
         datetime updated_at
     }
@@ -89,14 +80,30 @@ erDiagram
         bool is_active
         datetime created_at
         datetime updated_at
+        int provider_id FK
     }
     Schedule {
         int id PK
         string day_of_week
-        time start_time
-        time end_time
+        string start_time
+        string end_time
         datetime created_at
         datetime updated_at
+        int provider_id FK
+    }
+    Appointment {
+        int id PK
+        datetime date
+        string time
+        string status "scheduled, completed, canceled, no_show"
+        string client_name
+        string client_email
+        string client_phone
+        string notes
+        datetime created_at
+        datetime updated_at
+        int provider_id FK
+        int service_id FK
     }
 ```
 

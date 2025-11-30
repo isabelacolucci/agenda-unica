@@ -149,12 +149,37 @@ agenda-unica/
 
 ## 🗄️ Modelo de Dados
 
-O projeto utiliza os seguintes modelos principais:
+O projeto utiliza 4 tabelas principais no PostgreSQL:
 
-- **Provider**: Dados do profissional/estabelecimento
-- **Service**: Serviços oferecidos pelo profissional
-- **Schedule**: Horários de funcionamento
-- **Appointment**: Agendamentos realizados pelos clientes
+### Provider (Profissionais)
+Armazena os dados dos profissionais/estabelecimentos, incluindo:
+- Informações básicas (nome, nome do negócio, telefone, endereço)
+- Credenciais de autenticação (email, senha com bcrypt)
+- URL pública personalizada
+- Tokens para recuperação de senha
+
+### Service (Serviços)
+Serviços oferecidos pelos profissionais:
+- Nome, descrição e duração em minutos
+- Preço do serviço
+- Status ativo/inativo
+- Relacionamento com Provider
+
+### Schedule (Horários)
+Horários de funcionamento semanais:
+- Dia da semana
+- Horário de início e término
+- Relacionamento com Provider
+
+### Appointment (Agendamentos)
+Agendamentos realizados pelos clientes:
+- Data e hora do agendamento
+- Status (agendado, concluído, cancelado, não compareceu)
+- Dados do cliente (nome, email, telefone)
+- Observações opcionais
+- Relacionamento com Provider e Service
+
+**Observação**: O sistema utiliza autenticação JWT com Auth.js e não utiliza as tabelas padrão do Auth.js (Account, Session, User, VerificationToken). A autenticação é feita diretamente com a tabela `providers`.
 
 ## 📄 Documentação Adicional
 
