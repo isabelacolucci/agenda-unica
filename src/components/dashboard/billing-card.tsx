@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { DollarSign, TrendingUp, TrendingDown, Calendar } from "lucide-react"
+import { DollarSign, TrendingUp, TrendingDown, Calendar, Target, Percent } from "lucide-react"
 
 interface BillingCardProps {
   data: {
@@ -8,9 +8,15 @@ interface BillingCardProps {
     currentMonthPredicted: number
     predictionPercentage: number
   }
+  dailyData?: {
+    totalCompleted: number
+    totalScheduled: number
+    totalCanceled: number
+    totalNoShow: number
+  }
 }
 
-export function BillingCard({ data }: BillingCardProps) {
+export function BillingCard({ data, dailyData }: BillingCardProps) {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -26,6 +32,19 @@ export function BillingCard({ data }: BillingCardProps) {
   const TrendIcon = isPositiveTrend ? TrendingUp : TrendingDown
   const trendColor = isPositiveTrend ? "text-green-600" : "text-red-600"
   const trendBgColor = isPositiveTrend ? "bg-green-50" : "bg-red-50"
+
+  // Calcular métricas adicionais
+  const ticketMedio = dailyData && dailyData.totalCompleted > 0 
+    ? data.currentMonthRealized / dailyData.totalCompleted 
+    : 0
+
+  const taxaConversao = dailyData 
+    ? ((dailyData.totalCompleted / (dailyData.totalCompleted + dailyData.totalScheduled + dailyData.totalCanceled + dailyData.totalNoShow)) * 100)
+    : 0
+
+  const progressoMensal = data.previousMonth > 0
+    ? (data.currentMonthRealized / data.previousMonth) * 100
+    : 0
 
   const billingItems = [
     {
@@ -43,26 +62,44 @@ export function BillingCard({ data }: BillingCardProps) {
       icon: DollarSign,
       color: "text-blue-600",
       bgColor: "bg-blue-50",
-      description: "Já faturado este mês",
+      description: `${progressoMensal.toFixed(0)}% vs mês anterior`,
       formatted: formatCurrency(data.currentMonthRealized)
     },
     {
       label: "Previsão Mês Atual",
       value: data.currentMonthPredicted,
-      icon: DollarSign,
+      icon: Target,
       color: "text-purple-600",
       bgColor: "bg-purple-50",
-      description: "Faturamento previsto total",
+      description: `${formatCurrency(data.currentMonthPredicted - data.currentMonthRealized)} restante`,
       formatted: formatCurrency(data.currentMonthPredicted)
     },
     {
-      label: "Previsão vs Anterior",
+      label: "Crescimento Projetado",
       value: data.predictionPercentage,
       icon: TrendIcon,
       color: trendColor,
       bgColor: trendBgColor,
-      description: isPositiveTrend ? "Crescimento projetado" : "Redução projetada",
+      description: isPositiveTrend ? "Acima do mês anterior" : "Abaixo do mês anterior",
       formatted: formatPercentage(data.predictionPercentage)
+    },
+    {
+      label: "Ticket Médio",
+      value: ticketMedio,
+      icon: DollarSign,
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50",
+      description: dailyData ? `${dailyData.totalCompleted} atendimentos` : "Calculando...",
+      formatted: formatCurrency(ticketMedio)
+    },
+    {
+      label: "Taxa de Conversão",
+      value: taxaConversao,
+      icon: Percent,
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-50",
+      description: "Agendamentos concluídos",
+      formatted: formatPercentage(taxaConversao)
     }
   ]
 
@@ -75,7 +112,7 @@ export function BillingCard({ data }: BillingCardProps) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {billingItems.map((item) => {
             const Icon = item.icon
             return (
