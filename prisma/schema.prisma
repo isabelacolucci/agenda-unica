@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Provider {
+  id                 Int       @id @default(autoincrement())
+  name               String
+  businessName       String    @map("business_name")
+  publicUrl          String    @unique @map("public_url")
+  email              String    @unique
+  password           String
+  phone              String
+  address            String
+  resetToken         String?   @map("reset_token")
+  resetTokenExpiry   DateTime? @map("reset_token_expiry")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+
+  // Relacionamentos futuros
+  services     Service[]
+  schedules    Schedule[]
+  appointments Appointment[]
+
+  @@map("providers")
+}
+
+model Service {
+  id              Int      @id @default(autoincrement())
+  name            String
+  description     String?
+  durationMinutes Int      @map("duration_minutes")
+  price           Float
+  isActive        Boolean  @default(true) @map("is_active")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  providerId Int      @map("provider_id")
+  provider   Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  appointments Appointment[]
+
+  @@map("services")
+}
+
+model Schedule {
+  id        Int      @id @default(autoincrement())
+  dayOfWeek String   @map("day_of_week") // Monday, Tuesday, etc.
+  startTime String   @map("start_time") // "09:00"
+  endTime   String   @map("end_time") // "18:00"
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  providerId Int      @map("provider_id")
+  provider   Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("schedules")
+}
+
+model Appointment {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  time        String
+  status      String   @default("scheduled") // scheduled, completed, canceled, no_show
+  clientName  String   @map("client_name")
+  clientEmail String   @map("client_email")
+  clientPhone String   @map("client_phone")
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  providerId Int @map("provider_id")
+  serviceId  Int @map("service_id")
+
+  provider Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  service  Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@map("appointments")
+}
+
+// Auth.js required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
