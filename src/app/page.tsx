@@ -19,7 +19,7 @@ export default function Home() {
             Agenda Única
           </h1>
           
-          {/* Frase de propósito */
+          {/* Frase de propósito */}
           <p className="text-xl text-muted-foreground max-w-md mx-auto">
             Agende serviços de forma simples, rápida e segura.
           </p>

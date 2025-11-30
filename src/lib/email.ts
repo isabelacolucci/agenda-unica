@@ -28,9 +28,9 @@ export async function sendResetPasswordEmail({
   const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${resetToken}`
 
   const mailOptions = {
-    from: process.env.EMAIL_FROM || `TWAgenda <${process.env.EMAIL_USER}>`,
+    from: process.env.EMAIL_FROM || `Agenda Única <${process.env.EMAIL_USER}>`,
     to,
-    subject: "Recuperação de Senha - TWAgenda",
+    subject: "Recuperação de Senha - Agenda Única",
     html: `
       <!DOCTYPE html>
       <html lang="pt-BR">
@@ -77,7 +77,7 @@ export async function sendResetPasswordEmail({
 
       Se você não solicitou a recuperação de senha, ignore este e-mail.
 
-      © ${new Date().getFullYear()} TWAgenda - Todos os direitos reservados
+      © ${new Date().getFullYear()} Agenda Única - Todos os direitos reservados
     `,
   }
 

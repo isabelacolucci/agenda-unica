@@ -1,13 +1,13 @@
-# Plano de Ação – Implementação da Home Page (TWAgenda)
+# Plano de Ação – Implementação da Home Page (Agenda Única)
 
 ## Objetivo
-Implementar a página inicial (home page) do projeto TWAgenda, seguindo os requisitos do MVP e as decisões técnicas já definidas. A home page deve apresentar a identidade do projeto, propósito, e navegação funcional para login e registro.
+Implementar a página inicial (home page) do projeto Agenda Única, seguindo os requisitos do MVP e as decisões técnicas já definidas. A home page deve apresentar a identidade do projeto, propósito, e navegação funcional para login e registro.
 
 ---
 
 ## 1. Análise de Requisitos
 - Exibir ícone representando a aplicação.
-- Exibir o nome do projeto (TWAgenda).
+- Exibir o nome do projeto (Agenda Única).
 - Exibir uma frase de propósito da aplicação.
 - Dois botões: "Login" e "Registro".
 - Navegação funcional para páginas de login e registro.

@@ -68,7 +68,7 @@ Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 
 ```env
 # Database
-DATABASE_URL="postgresql://twagenda:twagenda123@localhost:5432/twagenda"
+DATABASE_URL="postgresql://agenda_unica:agenda_unica123@localhost:5432/agenda_unica"
 
 # Auth
 AUTH_SECRET="seu-auth-secret-aqui"
@@ -98,7 +98,7 @@ A aplicação estará disponível em `http://localhost:3000`
 ## 📁 Estrutura do Projeto
 
 ```
-twagenda/
+agenda-unica/
 ├── src/
 │   ├── app/                    # App Router do Next.js
 │   │   ├── api/               # API Routes

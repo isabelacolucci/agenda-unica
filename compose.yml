@@ -1,11 +1,11 @@
 services:
   postgres:
     image: postgres:15
-    container_name: twagenda-postgres
+    container_name: agenda-unica-postgres
     environment:
-      POSTGRES_DB: twagenda
-      POSTGRES_USER: twagenda
-      POSTGRES_PASSWORD: twagenda123
+      POSTGRES_DB: agenda_unica
+      POSTGRES_USER: agenda_unica
+      POSTGRES_PASSWORD: agenda_unica123
     ports:
       - "5432:5432"
     volumes:
