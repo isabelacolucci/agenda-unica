@@ -75,6 +75,8 @@ AUTH_SECRET="seu-auth-secret-aqui"
 AUTH_URL="http://localhost:3000"
 ```
 
+> **💡 Teste em dispositivos móveis:** Para testar em dispositivos móveis na mesma rede, não é necessário alterar o `AUTH_URL`. O sistema agora detecta automaticamente o host usado para acessar a aplicação (seja localhost ou o IP da máquina na rede local).
+
 ### 5. Execute as migrações do banco
 
 ```bash

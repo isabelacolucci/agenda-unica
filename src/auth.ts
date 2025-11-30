@@ -7,6 +7,8 @@ import { verifyPassword } from "@/lib/auth/password"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const { handlers, signIn, signOut, auth } = (NextAuth as any)({
+  trustHost: true,
+  useSecureCookies: process.env.NODE_ENV === "production",
   providers: [
     Credentials({
       credentials: {
