@@ -1,7 +1,7 @@
 # Plano de Ação – Listagem de Serviços (MVP)
 
 ## Objetivo
-Implementar a página de listagem de serviços para o painel do profissional, conforme requisitos do MVP e decisões técnicas do projeto TWAgenda.
+Implementar a página de listagem de serviços para o painel do profissional, conforme requisitos do MVP e decisões técnicas do projeto Agenda Única.
 
 ---
 

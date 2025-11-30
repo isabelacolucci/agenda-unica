@@ -43,7 +43,7 @@ export async function sendResetPasswordEmail({
         <div style="background-color: #f4f4f4; padding: 20px; border-radius: 5px;">
           <h1 style="color: #2563eb; margin-top: 0;">Recuperação de Senha</h1>
           <p>Olá, <strong>${name}</strong>!</p>
-          <p>Você solicitou a recuperação de senha da sua conta no TWAgenda.</p>
+          <p>Você solicitou a recuperação de senha da sua conta no Agenda Única.</p>
           <p>Para redefinir sua senha, clique no botão abaixo:</p>
           <div style="text-align: center; margin: 30px 0;">
             <a href="${resetUrl}" style="background-color: #2563eb; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">
@@ -59,7 +59,7 @@ export async function sendResetPasswordEmail({
           </p>
           <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
           <p style="color: #999; font-size: 12px; text-align: center;">
-            © ${new Date().getFullYear()} TWAgenda - Todos os direitos reservados
+            © ${new Date().getFullYear()} Agenda Única - Todos os direitos reservados
           </p>
         </div>
       </body>
@@ -68,7 +68,7 @@ export async function sendResetPasswordEmail({
     text: `
       Olá, ${name}!
 
-      Você solicitou a recuperação de senha da sua conta no TWAgenda.
+      Você solicitou a recuperação de senha da sua conta no Agenda Única.
 
       Para redefinir sua senha, acesse o link abaixo:
       ${resetUrl}

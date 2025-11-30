@@ -1,4 +1,4 @@
-# Plano de Ação – Dashboard v1 (TWAgenda)
+# Plano de Ação – Dashboard v1 (Agenda Única)
 
 ## Objetivo
 Implementar a primeira versão do dashboard do prestador de serviço, exibindo:

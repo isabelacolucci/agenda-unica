@@ -16,10 +16,10 @@ export default function Home() {
         {/* Nome do projeto */}
         <div className="space-y-4">
           <h1 className="text-6xl font-bold text-foreground tracking-tight">
-            TWAgenda
+            Agenda Única
           </h1>
           
-          {/* Frase de propósito */}
+          {/* Frase de propósito */
           <p className="text-xl text-muted-foreground max-w-md mx-auto">
             Agende serviços de forma simples, rápida e segura.
           </p>

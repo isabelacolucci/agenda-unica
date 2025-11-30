@@ -1,4 +1,4 @@
-# Plano de Ação – Implementação da Página de Login (TWAgenda)
+# Plano de Ação – Implementação da Página de Login (Agenda Única)
 
 ## Objetivo
 Implementar a página de login para prestadores de serviço, conforme requisitos do MVP, garantindo autenticação e autorização básicas. O login permitirá acesso ao dashboard (página em branco inicialmente, apenas para validação do fluxo).

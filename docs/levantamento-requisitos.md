@@ -1,4 +1,4 @@
-# Levantamento de Requisitos – TWAgenda (MVP)
+# Levantamento de Requisitos – Agenda Única (MVP)
 
 ## 1. Problema Identificado
 Falta de uma visão clara do faturamento futuro e dos agendamentos realizados pelos profissionais.

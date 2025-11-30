@@ -1,4 +1,4 @@
-# Decisões Técnicas – TWAgenda (MVP)
+# Decisões Técnicas – Agenda Única (MVP)
 
 ## 1. Arquitetura Geral
 - **Monolito Modular** (Next.js fullstack)

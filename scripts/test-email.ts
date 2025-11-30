@@ -36,9 +36,9 @@ async function testEmailConnection() {
 
     console.log("📨 Enviando e-mail de teste...")
     const info = await transporter.sendMail({
-      from: process.env.EMAIL_FROM || `TWAgenda <${process.env.EMAIL_USER}>`,
+      from: process.env.EMAIL_FROM || `Agenda Única <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER, // Envia para o próprio e-mail
-      subject: "Teste de Envio - TWAgenda",
+      subject: "Teste de Envio - Agenda Única",
       html: `
         <h1>✅ Teste de E-mail Bem-Sucedido!</h1>
         <p>Se você recebeu este e-mail, a configuração do Gmail SMTP está funcionando corretamente.</p>

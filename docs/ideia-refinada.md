@@ -1,7 +1,7 @@
 # Documento de Concepção – Ideia Refinada
 
 ## 1. Título da Ideia/Projeto
-TWAgenda
+Agenda Única
 
 ## 2. Descrição Geral da Ideia
 A solução propõe uma aplicação web de agendamento voltada para negócios locais, como barbearias, salões de beleza e consultórios. O objetivo é resolver a falta de previsibilidade de faturamento e a ausência de presença digital, permitindo que profissionais cadastrem seus serviços, horários e informações do estabelecimento, enquanto clientes agendam facilmente por uma página pública exclusiva.

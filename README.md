@@ -1,8 +1,8 @@
-# TWAgenda
+# Agenda Única
 
 ## 📋 Sobre o Projeto
 
-TWAgenda é uma aplicação web de agendamento voltada para negócios locais, como barbearias, salões de beleza, consultórios e outros profissionais autônomos. A solução permite que profissionais cadastrem seus serviços e horários de atendimento, enquanto clientes podem agendar facilmente através de uma página pública exclusiva.
+Agenda Única é uma aplicação web de agendamento voltada para negócios locais, como barbearias, salões de beleza, consultórios e outros profissionais autônomos. A solução permite que profissionais cadastrem seus serviços e horários de atendimento, enquanto clientes podem agendar facilmente através de uma página pública exclusiva.
 
 ### 🎯 Objetivos
 
@@ -45,7 +45,7 @@ TWAgenda é uma aplicação web de agendamento voltada para negócios locais, co
 
 ```bash
 git clone <url-do-repositorio>
-cd twagenda
+cd agenda-unica
 ```
 
 ### 2. Instale as dependências

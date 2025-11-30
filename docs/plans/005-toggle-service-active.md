@@ -1,7 +1,7 @@
 # Plano de Ação – Toggle de Ativação de Serviço (`isActive`)
 
 ## Contexto
-- O sistema TWAgenda permite que prestadores cadastrem serviços e definam se estão ativos ou inativos.
+- O sistema Agenda Única permite que prestadores cadastrem serviços e definam se estão ativos ou inativos.
 - Atualmente, o campo `isActive` existe no modelo `Service`, mas não há funcionalidade para alternar seu valor via interface ou API.
 - O objetivo é permitir que o prestador ative/inative um serviço pelo painel, conforme requisitos do MVP.
 

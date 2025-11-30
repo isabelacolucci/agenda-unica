@@ -1,4 +1,4 @@
-# Plano de Ação – Cadastro de Serviço (TWAgenda)
+# Plano de Ação – Cadastro de Serviço (Agenda Única)
 
 ## 1. Objetivo
 Implementar a funcionalidade de cadastro de serviço, permitindo que o prestador crie novos serviços via modal, com validação, feedback ao usuário e atualização automática da lista.

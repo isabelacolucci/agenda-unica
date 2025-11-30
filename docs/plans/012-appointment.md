@@ -1,4 +1,4 @@
-# Plano de Ação – Criação de Agendamento (TWAgenda)
+# Plano de Ação – Criação de Agendamento (Agenda Única)
 
 ## Visão Geral
 Implementar a funcionalidade de criação de agendamento, permitindo que o cliente selecione um serviço, visualize as datas e horários disponíveis (com base na tabela Schedule) e preencha um formulário para concluir o agendamento. O fluxo será iniciado ao clicar no card de um serviço na página pública do prestador.
