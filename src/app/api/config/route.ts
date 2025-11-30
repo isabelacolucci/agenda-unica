@@ -25,6 +25,8 @@ export async function GET() {
         businessName: true,
         publicUrl: true,
         email: true,
+        phone: true,
+        isWhatsapp: true,
         address: true,
       },
     });
@@ -103,6 +105,8 @@ export async function PUT(request: Request) {
         businessName: true,
         publicUrl: true,
         email: true,
+        phone: true,
+        isWhatsapp: true,
         address: true,
       },
     });

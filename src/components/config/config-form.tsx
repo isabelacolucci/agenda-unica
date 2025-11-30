@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { UpdateProviderConfigInput, updateProviderConfigSchema } from "@/lib/validations/config";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { revalidateConfig } from "@/lib/actions/revalidate";
+import { formatPhoneNumber, cleanPhoneNumber } from "@/lib/utils";
 
 interface ProviderConfig {
   id: number;
@@ -17,6 +19,8 @@ interface ProviderConfig {
   businessName: string;
   publicUrl: string;
   email: string;
+  phone: string;
+  isWhatsapp: boolean;
   address: string;
 }
 
@@ -29,9 +33,23 @@ export default function ConfigForm() {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
+    watch,
   } = useForm<UpdateProviderConfigInput>({
     resolver: zodResolver(updateProviderConfigSchema),
+    defaultValues: {
+      name: "",
+      businessName: "",
+      publicUrl: "",
+      email: "",
+      phone: "",
+      isWhatsapp: false,
+      address: "",
+    },
   });
+
+  const phoneValue = watch("phone");
+  const isWhatsappValue = watch("isWhatsapp");
 
   const loadProviderConfig = useCallback(async () => {
     try {
@@ -44,7 +62,12 @@ export default function ConfigForm() {
       }
 
       const data: ProviderConfig = await response.json();
-      reset(data);
+      // Format phone for display
+      const formattedData = {
+        ...data,
+        phone: data.phone,
+      };
+      reset(formattedData);
     } catch (error) {
       console.error("Erro ao carregar configurações:", error);
       toast.error(error instanceof Error ? error.message : "Erro ao carregar configurações");
@@ -61,12 +84,18 @@ export default function ConfigForm() {
     try {
       setIsLoading(true);
       
+      // Clean phone number before sending
+      const dataToSend = {
+        ...data,
+        phone: cleanPhoneNumber(data.phone),
+      };
+      
       const response = await fetch("/api/config", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(dataToSend),
       });
 
       if (!response.ok) {
@@ -164,6 +193,41 @@ export default function ConfigForm() {
           {errors.email && (
             <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
           )}
+        </div>
+
+        <div>
+          <Label htmlFor="phone">Telefone</Label>
+          <Input
+            id="phone"
+            type="tel"
+            placeholder="(11) 99999-9999"
+            value={formatPhoneNumber(phoneValue || "")}
+            onChange={(e) => {
+              const formatted = formatPhoneNumber(e.target.value);
+              const cleaned = cleanPhoneNumber(formatted);
+              setValue("phone", cleaned, { shouldValidate: true });
+            }}
+            className={errors.phone ? "border-red-500" : ""}
+            maxLength={15}
+          />
+          {errors.phone && (
+            <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+          )}
+          <div className="flex items-center space-x-2 mt-2">
+            <Checkbox
+              id="isWhatsapp"
+              checked={isWhatsappValue}
+              onCheckedChange={(checked) => {
+                setValue("isWhatsapp", checked as boolean);
+              }}
+            />
+            <label
+              htmlFor="isWhatsapp"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+            >
+              Este número é WhatsApp
+            </label>
+          </div>
         </div>
 
         <div>

@@ -25,6 +25,15 @@ export const updateProviderConfigSchema = z.object({
     .email("E-mail deve ter um formato válido")
     .max(255, "E-mail deve ter no máximo 255 caracteres"),
   
+  phone: z
+    .string()
+    .min(10, "Telefone deve ter pelo menos 10 dígitos")
+    .max(11, "Telefone deve ter no máximo 11 dígitos")
+    .regex(/^\d+$/, "Telefone deve conter apenas números"),
+  
+  isWhatsapp: z
+    .boolean(),
+  
   address: z
     .string()
     .min(10, "Endereço deve ter pelo menos 10 caracteres")

@@ -18,6 +18,7 @@ model Provider {
   email              String    @unique
   password           String
   phone              String
+  isWhatsapp         Boolean   @default(false) @map("is_whatsapp")
   address            String
   resetToken         String?   @map("reset_token")
   resetTokenExpiry   DateTime? @map("reset_token_expiry")

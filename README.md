@@ -82,6 +82,7 @@ npx prisma migrate dev
 ```
 
 ### 6. (Opcional) Execute o seed do banco
+Caso opte por popular o banco com dados iniciais, será criado um usuário profissional de teste: joao@mail.com / senha: senha@123
 
 ```bash
 npm run db:seed
