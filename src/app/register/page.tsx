@@ -73,28 +73,29 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-6 sm:space-y-8 p-6 sm:p-8 bg-card rounded-lg shadow-md border border-border">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Cadastre-se
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             Crie sua conta de prestador de serviços
           </p>
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nome completo</FormLabel>
+                  <FormLabel className="text-sm font-medium">Nome completo</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Digite seu nome completo"
+                      className="h-11 sm:h-10"
                       {...field}
                     />
                   </FormControl>
@@ -108,10 +109,11 @@ export default function RegisterPage() {
               name="businessName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nome do negócio</FormLabel>
+                  <FormLabel className="text-sm font-medium">Nome do negócio</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Ex: Barbearia do João"
+                      className="h-11 sm:h-10"
                       {...field}
                     />
                   </FormControl>
@@ -125,11 +127,12 @@ export default function RegisterPage() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>E-mail</FormLabel>
+                  <FormLabel className="text-sm font-medium">E-mail</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
                       placeholder="seu@email.com"
+                      className="h-11 sm:h-10"
                       {...field}
                     />
                   </FormControl>
@@ -143,11 +146,12 @@ export default function RegisterPage() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Senha</FormLabel>
+                  <FormLabel className="text-sm font-medium">Senha</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       placeholder="••••••••"
+                      className="h-11 sm:h-10"
                       {...field}
                     />
                   </FormControl>
@@ -161,11 +165,12 @@ export default function RegisterPage() {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Telefone</FormLabel>
+                  <FormLabel className="text-sm font-medium">Telefone</FormLabel>
                   <FormControl>
                     <Input
                       type="tel"
                       placeholder="(11) 99999-9999"
+                      className="h-11 sm:h-10"
                       value={field.value}
                       onChange={(e) => {
                         const formatted = formatPhoneNumber(e.target.value)
@@ -185,10 +190,11 @@ export default function RegisterPage() {
               name="address"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Endereço</FormLabel>
+                  <FormLabel className="text-sm font-medium">Endereço</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Rua, número, bairro, cidade"
+                      className="h-11 sm:h-10"
                       {...field}
                     />
                   </FormControl>
@@ -198,8 +204,9 @@ export default function RegisterPage() {
             />
 
             <Button 
-              type="submit" 
-              className="w-full"
+              type="submit"
+              size="lg"
+              className="w-full h-11 sm:h-10 text-base sm:text-sm"
               disabled={isLoading}
             >
               {isLoading ? "Cadastrando..." : "Cadastrar"}
@@ -207,12 +214,12 @@ export default function RegisterPage() {
           </form>
         </Form>
 
-        <div className="text-center">
-          <p className="text-sm text-gray-600">
+        <div className="text-center pt-2">
+          <p className="text-sm text-muted-foreground">
             Já tem uma conta?{" "}
             <a
               href="/login"
-              className="font-medium text-blue-600 hover:text-blue-500"
+              className="font-medium text-primary hover:text-primary/80 transition-colors"
             >
               Faça login
             </a>

@@ -65,24 +65,24 @@ export function AppointmentStatsCard({ stats }: AppointmentStatsCardProps) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
           {statItems.map((item) => {
             const Icon = item.icon
             return (
               <div
                 key={item.label}
-                className={`${item.bgColor} rounded-lg p-4 text-center hover:shadow-md transition-shadow`}
+                className={`${item.bgColor} rounded-lg p-3 sm:p-4 text-center hover:shadow-md transition-shadow`}
               >
-                <div className="flex items-center justify-center mb-2">
-                  <Icon className={`h-6 w-6 ${item.color}`} />
+                <div className="flex items-center justify-center mb-1.5 sm:mb-2">
+                  <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${item.color}`} />
                 </div>
-                <div className={`text-2xl font-bold ${item.color} mb-1`}>
+                <div className={`text-xl sm:text-2xl font-bold ${item.color} mb-0.5 sm:mb-1`}>
                   {item.value}
                 </div>
-                <div className="text-sm font-medium text-gray-800 mb-1">
+                <div className="text-xs sm:text-sm font-medium text-gray-800 mb-0.5 sm:mb-1">
                   {item.label}
                 </div>
-                <div className="text-xs text-gray-600">
+                <div className="text-[10px] sm:text-xs text-gray-600 line-clamp-2">
                   {item.description}
                 </div>
               </div>

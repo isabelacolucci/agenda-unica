@@ -140,25 +140,25 @@ export function AppointmentModal({
 
         <div className="space-y-6">
           {/* Resumo do Agendamento */}
-          <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+          <div className="bg-accent rounded-lg p-4 space-y-3">
             <div className="flex items-center space-x-2">
-              <User className="w-4 h-4 text-gray-500" />
+              <User className="w-4 h-4 text-muted-foreground" />
               <span className="font-medium">{service.name}</span>
             </div>
             
             <div className="flex items-center space-x-2">
-              <Calendar className="w-4 h-4 text-gray-500" />
+              <Calendar className="w-4 h-4 text-muted-foreground" />
               <span className="capitalize">{formatDate(selectedDate)}</span>
             </div>
             
             <div className="flex items-center space-x-2">
-              <Clock className="w-4 h-4 text-gray-500" />
+              <Clock className="w-4 h-4 text-muted-foreground" />
               <span>{selectedTime} ({formatDuration(service.durationMinutes)})</span>
             </div>
             
             <div className="flex items-center space-x-2">
-              <DollarSign className="w-4 h-4 text-gray-500" />
-              <span className="font-semibold text-green-600">{formatPrice(service.price)}</span>
+              <DollarSign className="w-4 h-4 text-muted-foreground" />
+              <span className="font-semibold text-green-600 dark:text-green-400">{formatPrice(service.price)}</span>
             </div>
           </div>
 
@@ -238,7 +238,7 @@ export function AppointmentModal({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 bg-blue-600 hover:bg-blue-700"
+                className="flex-1"
               >
                 {isSubmitting ? "Agendando..." : "Confirmar Agendamento"}
               </Button>

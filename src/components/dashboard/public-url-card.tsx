@@ -45,8 +45,8 @@ export function PublicUrlCard({ publicUrl }: PublicUrlCardProps) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-between bg-gray-50 p-4 rounded-lg border">
-          <code className="text-sm text-gray-700 flex-1 mr-4 truncate font-mono">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-gray-50 p-3 sm:p-4 rounded-lg border">
+          <code className="text-xs sm:text-sm text-gray-700 flex-1 truncate font-mono break-all">
             {fullUrl}
           </code>
           <div className="flex gap-2 flex-shrink-0">
@@ -54,17 +54,17 @@ export function PublicUrlCard({ publicUrl }: PublicUrlCardProps) {
               size="sm"
               variant="outline"
               onClick={handleCopy}
-              className="flex items-center gap-2"
+              className="flex items-center gap-1.5 sm:gap-2 flex-1 sm:flex-initial justify-center"
             >
               {copied ? (
                 <>
-                  <Check className="h-4 w-4" />
-                  Copiado!
+                  <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                  <span className="text-xs sm:text-sm">Copiado!</span>
                 </>
               ) : (
                 <>
-                  <Copy className="h-4 w-4" />
-                  Copiar
+                  <Copy className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                  <span className="text-xs sm:text-sm">Copiar</span>
                 </>
               )}
             </Button>
@@ -72,10 +72,10 @@ export function PublicUrlCard({ publicUrl }: PublicUrlCardProps) {
               size="sm"
               variant="default"
               onClick={handleOpenLink}
-              className="flex items-center gap-2"
+              className="flex items-center gap-1.5 sm:gap-2 flex-1 sm:flex-initial justify-center"
             >
-              <ExternalLink className="h-4 w-4" />
-              Abrir
+              <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span className="text-xs sm:text-sm">Abrir</span>
             </Button>
           </div>
         </div>

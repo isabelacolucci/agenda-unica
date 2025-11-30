@@ -51,38 +51,38 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-6 sm:space-y-8 p-6 sm:p-8 bg-card rounded-lg shadow-md border border-border">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Login
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             Faça login para acessar sua agenda
           </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
           <div>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-sm font-medium">Email</Label>
             <Input
               id="email"
               type="email"
               placeholder="seu@email.com"
               {...register("email")}
-              className="mt-1"
+              className="mt-1.5 h-11 sm:h-10"
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              <p className="mt-1.5 text-sm text-red-600">{errors.email.message}</p>
             )}
           </div>
 
           <div>
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Senha</Label>
+            <div className="flex items-center justify-between mb-1.5">
+              <Label htmlFor="password" className="text-sm font-medium">Senha</Label>
               <a
                 href="/forgot-password"
-                className="text-sm font-medium text-blue-600 hover:text-blue-500"
+                className="text-xs sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
               >
                 Esqueceu a senha?
               </a>
@@ -92,28 +92,29 @@ export default function LoginPage() {
               type="password"
               placeholder="••••••••"
               {...register("password")}
-              className="mt-1"
+              className="h-11 sm:h-10"
             />
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+              <p className="mt-1.5 text-sm text-red-600">{errors.password.message}</p>
             )}
           </div>
 
           <Button
             type="submit"
-            className="w-full"
+            size="lg"
+            className="w-full h-11 sm:h-10 text-base sm:text-sm"
             disabled={isLoading}
           >
             {isLoading ? "Entrando..." : "Entrar"}
           </Button>
         </form>
 
-        <div className="text-center">
-          <p className="text-sm text-gray-600">
+        <div className="text-center pt-2">
+          <p className="text-sm text-muted-foreground">
             Ainda não tem uma conta?{" "}
             <a
               href="/register"
-              className="font-medium text-blue-600 hover:text-blue-500"
+              className="font-medium text-primary hover:text-primary/80 transition-colors"
             >
               Cadastre-se aqui
             </a>

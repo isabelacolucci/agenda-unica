@@ -66,13 +66,13 @@ function ResetPasswordForm() {
 
   if (!token) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-        <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+      <div className="flex min-h-screen items-center justify-center bg-background px-4">
+        <div className="max-w-md w-full space-y-8 p-8 bg-card rounded-lg shadow-md border border-border">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
               Token Inválido
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-muted-foreground">
               O link de recuperação de senha é inválido ou está incompleto.
             </p>
           </div>
@@ -115,13 +115,13 @@ function ResetPasswordForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md w-full space-y-8 p-8 bg-card rounded-lg shadow-md border border-border">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground">
             Redefinir Senha
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             Digite sua nova senha abaixo
           </p>
         </div>
@@ -195,7 +195,7 @@ function ResetPasswordForm() {
         <div className="text-center">
           <Link
             href="/login"
-            className="text-sm font-medium text-blue-600 hover:text-blue-500"
+            className="text-sm font-medium text-primary hover:text-primary/80"
           >
             Voltar para Login
           </Link>
@@ -208,9 +208,9 @@ function ResetPasswordForm() {
 export default function ResetPasswordPage() {
   return (
     <Suspense fallback={
-      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center">
-          <p className="text-gray-600">Carregando...</p>
+          <p className="text-muted-foreground">Carregando...</p>
         </div>
       </div>
     }>

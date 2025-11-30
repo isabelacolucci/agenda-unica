@@ -135,51 +135,54 @@ export function AppointmentsList() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Filtros */}
-      <div className="bg-white p-4 rounded-lg border border-gray-200">
-        <div className="flex items-center gap-4 flex-wrap">
+      <div className="bg-card p-3 sm:p-4 rounded-lg border border-border">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4 text-gray-500" />
-            <span className="text-sm font-medium text-gray-700">Filtros:</span>
+            <Filter className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">Filtros:</span>
           </div>
           
-          <div className="flex items-center gap-2">
-            <label htmlFor="status-filter" className="text-sm text-gray-600">Status:</label>
-            <select
-              id="status-filter"
-              value={filters.status}
-              onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="text-sm border border-gray-300 rounded px-2 py-1"
-            >
-              <option value="">Todos</option>
-              <option value="scheduled">Agendado</option>
-              <option value="completed">Concluído</option>
-              <option value="canceled">Cancelado</option>
-              <option value="no_show">Não compareceu</option>
-            </select>
-          </div>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-1">
+            <div className="flex items-center gap-2 flex-1 sm:flex-initial">
+              <label htmlFor="status-filter" className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">Status:</label>
+              <select
+                id="status-filter"
+                value={filters.status}
+                onChange={(e) => handleFilterChange('status', e.target.value)}
+                className="flex-1 text-xs sm:text-sm border border-input rounded px-2 py-1.5 min-h-[44px] sm:min-h-0 bg-background"
+              >
+                <option value="">Todos</option>
+                <option value="scheduled">Agendado</option>
+                <option value="completed">Concluído</option>
+                <option value="canceled">Cancelado</option>
+                <option value="no_show">Não compareceu</option>
+              </select>
+            </div>
 
-          <div className="flex items-center gap-2">
-            <label htmlFor="date-filter" className="text-sm text-gray-600">Data:</label>
-            <input
-              id="date-filter"
-              type="date"
-              value={filters.date}
-              onChange={(e) => handleFilterChange('date', e.target.value)}
-              className="text-sm border border-gray-300 rounded px-2 py-1"
-            />
-          </div>
+            <div className="flex items-center gap-2 flex-1 sm:flex-initial">
+              <label htmlFor="date-filter" className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">Data:</label>
+              <input
+                id="date-filter"
+                type="date"
+                value={filters.date}
+                onChange={(e) => handleFilterChange('date', e.target.value)}
+                className="flex-1 text-xs sm:text-sm border border-input rounded px-2 py-1.5 min-h-[44px] sm:min-h-0 bg-background"
+              />
+            </div>
 
-          {(filters.status || filters.date) && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setFilters({ status: '', date: '' })}
-            >
-              Limpar filtros
-            </Button>
-          )}
+            {(filters.status || filters.date) && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setFilters({ status: '', date: '' })}
+                className="w-full sm:w-auto"
+              >
+                Limpar filtros
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -211,30 +214,32 @@ export function AppointmentsList() {
 
           {/* Paginação */}
           {pagination.totalPages > 1 && (
-            <div className="flex items-center justify-between bg-white px-4 py-3 border border-gray-200 rounded-lg">
-              <div className="flex items-center text-sm text-gray-700">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white px-3 sm:px-4 py-3 border border-gray-200 rounded-lg">
+              <div className="flex items-center text-xs sm:text-sm text-gray-700 justify-center sm:justify-start">
                 <span>
                   Mostrando {Math.min((pagination.page - 1) * pagination.limit + 1, pagination.total)} até{' '}
-                  {Math.min(pagination.page * pagination.limit, pagination.total)} de {pagination.total} agendamentos
+                  {Math.min(pagination.page * pagination.limit, pagination.total)} de {pagination.total}
                 </span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center space-x-2">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => handlePageChange(pagination.page - 1)}
                   disabled={pagination.page <= 1}
+                  className="flex-1 sm:flex-initial"
                 >
                   Anterior
                 </Button>
-                <span className="text-sm text-gray-700">
-                  Página {pagination.page} de {pagination.totalPages}
+                <span className="text-xs sm:text-sm text-gray-700 whitespace-nowrap px-2">
+                  {pagination.page}/{pagination.totalPages}
                 </span>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => handlePageChange(pagination.page + 1)}
                   disabled={pagination.page >= pagination.totalPages}
+                  className="flex-1 sm:flex-initial"
                 >
                   Próxima
                 </Button>

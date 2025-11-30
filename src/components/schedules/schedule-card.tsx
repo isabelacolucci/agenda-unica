@@ -25,13 +25,13 @@ export default function ScheduleCard({
   onDelete
 }: ScheduleCardProps) {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
-      <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">
+    <div className="bg-card rounded-lg border border-border p-4 md:p-6">
+      <h3 className="text-base md:text-lg font-semibold text-foreground mb-3 md:mb-4">
         {dayLabel}
       </h3>
       
       {schedules.length === 0 ? (
-        <p className="text-gray-500 text-xs md:text-sm">Nenhum horário definido</p>
+        <p className="text-muted-foreground text-xs md:text-sm">Nenhum horário definido</p>
       ) : (
         <div className="space-y-2 md:space-y-3">
           {schedules.map((schedule) => (

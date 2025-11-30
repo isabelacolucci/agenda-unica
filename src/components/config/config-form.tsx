@@ -133,70 +133,70 @@ export default function ConfigForm() {
   }
 
   return (
-    <div className="bg-white shadow-sm rounded-lg p-6">
-      <h2 className="text-lg font-medium text-gray-900 mb-6">
+    <div className="bg-white shadow-sm rounded-lg p-4 sm:p-6">
+      <h2 className="text-base sm:text-lg font-medium text-gray-900 mb-4 sm:mb-6">
         Informações Básicas
       </h2>
       
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
         <div>
-          <Label htmlFor="name">Nome Completo</Label>
+          <Label htmlFor="name" className="text-sm font-medium">Nome Completo</Label>
           <Input
             id="name"
             type="text"
             {...register("name")}
-            className={errors.name ? "border-red-500" : ""}
+            className={`mt-1.5 h-11 sm:h-10 ${errors.name ? "border-red-500" : ""}`}
           />
           {errors.name && (
-            <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+            <p className="mt-1.5 text-sm text-red-600">{errors.name.message}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="businessName">Nome do Negócio</Label>
+          <Label htmlFor="businessName" className="text-sm font-medium">Nome do Negócio</Label>
           <Input
             id="businessName"
             type="text"
             {...register("businessName")}
-            className={errors.businessName ? "border-red-500" : ""}
+            className={`mt-1.5 h-11 sm:h-10 ${errors.businessName ? "border-red-500" : ""}`}
           />
           {errors.businessName && (
-            <p className="mt-1 text-sm text-red-600">{errors.businessName.message}</p>
+            <p className="mt-1.5 text-sm text-red-600">{errors.businessName.message}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="publicUrl">URL Pública</Label>
+          <Label htmlFor="publicUrl" className="text-sm font-medium">URL Pública</Label>
           <Input
             id="publicUrl"
             type="text"
             {...register("publicUrl")}
-            className={errors.publicUrl ? "border-red-500" : ""}
+            className={`mt-1.5 h-11 sm:h-10 ${errors.publicUrl ? "border-red-500" : ""}`}
             placeholder="meu-negocio"
           />
           {errors.publicUrl && (
-            <p className="mt-1 text-sm text-red-600">{errors.publicUrl.message}</p>
+            <p className="mt-1.5 text-sm text-red-600">{errors.publicUrl.message}</p>
           )}
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1.5 text-xs sm:text-sm text-gray-500">
             Esta URL será usada para que clientes acessem sua página de agendamento
           </p>
         </div>
 
         <div>
-          <Label htmlFor="email">E-mail</Label>
+          <Label htmlFor="email" className="text-sm font-medium">E-mail</Label>
           <Input
             id="email"
             type="email"
             {...register("email")}
-            className={errors.email ? "border-red-500" : ""}
+            className={`mt-1.5 h-11 sm:h-10 ${errors.email ? "border-red-500" : ""}`}
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+            <p className="mt-1.5 text-sm text-red-600">{errors.email.message}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="phone">Telefone</Label>
+          <Label htmlFor="phone" className="text-sm font-medium">Telefone</Label>
           <Input
             id="phone"
             type="tel"
@@ -207,11 +207,11 @@ export default function ConfigForm() {
               const cleaned = cleanPhoneNumber(formatted);
               setValue("phone", cleaned, { shouldValidate: true });
             }}
-            className={errors.phone ? "border-red-500" : ""}
+            className={`mt-1.5 h-11 sm:h-10 ${errors.phone ? "border-red-500" : ""}`}
             maxLength={15}
           />
           {errors.phone && (
-            <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+            <p className="mt-1.5 text-sm text-red-600">{errors.phone.message}</p>
           )}
           <div className="flex items-center space-x-2 mt-2">
             <Checkbox
@@ -223,7 +223,7 @@ export default function ConfigForm() {
             />
             <label
               htmlFor="isWhatsapp"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+              className="text-xs sm:text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
             >
               Este número é WhatsApp
             </label>
@@ -231,23 +231,24 @@ export default function ConfigForm() {
         </div>
 
         <div>
-          <Label htmlFor="address">Endereço</Label>
+          <Label htmlFor="address" className="text-sm font-medium">Endereço</Label>
           <Textarea
             id="address"
             {...register("address")}
-            className={errors.address ? "border-red-500" : ""}
+            className={`mt-1.5 ${errors.address ? "border-red-500" : ""}`}
             rows={3}
             placeholder="Rua, número, bairro, cidade, estado"
           />
           {errors.address && (
-            <p className="mt-1 text-sm text-red-600">{errors.address.message}</p>
+            <p className="mt-1.5 text-sm text-red-600">{errors.address.message}</p>
           )}
         </div>
 
         <Button
           type="submit"
+          size="lg"
           disabled={isLoading}
-          className="w-full"
+          className="w-full h-11 sm:h-10 text-base sm:text-sm"
         >
           {isLoading ? "Salvando..." : "Salvar Alterações"}
         </Button>

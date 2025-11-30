@@ -157,17 +157,17 @@ export default function ScheduleList() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-64">
-        <div className="text-gray-500">Carregando disponibilidades...</div>
+        <div className="text-muted-foreground">Carregando disponibilidades...</div>
       </div>
     )
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">Disponibilidade</h2>
-          <p className="text-gray-600">Gerencie seus horários de atendimento</p>
+      <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-0">
+        <div className="flex-1">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground">Disponibilidade</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">Gerencie seus horários de atendimento</p>
         </div>
         
         <CreateScheduleModal
@@ -203,17 +203,17 @@ export default function ScheduleList() {
       />
 
       {schedules.length === 0 ? (
-        <div className="text-center py-12">
-          <Clock className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-sm font-semibold text-gray-900">
+        <div className="text-center py-8 sm:py-12 px-4">
+          <Clock className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground" />
+          <h3 className="mt-2 text-sm sm:text-base font-semibold text-foreground">
             Nenhuma disponibilidade cadastrada
           </h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
             Comece adicionando seus horários de atendimento
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {Object.entries(DAYS_OF_WEEK_LABELS).map(([dayKey, dayLabel]) => {
             const daySchedules = groupedSchedules[dayKey as keyof typeof DAYS_OF_WEEK_LABELS] || []
             

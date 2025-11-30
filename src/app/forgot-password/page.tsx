@@ -55,19 +55,19 @@ export default function ForgotPasswordPage() {
 
   if (emailSent) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-        <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+      <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8 sm:px-6 lg:px-8">
+        <div className="w-full max-w-md space-y-6 sm:space-y-8 p-6 sm:p-8 bg-card rounded-lg shadow-md border border-border">
           <div className="text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-              <Mail className="h-6 w-6 text-green-600" />
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
+              <Mail className="h-6 w-6 text-green-600 dark:text-green-200" />
             </div>
-            <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">
+            <h2 className="mt-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
               E-mail Enviado!
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-muted-foreground">
               Se o e-mail informado estiver cadastrado, você receberá as instruções para recuperação de senha.
             </p>
-            <p className="mt-4 text-sm text-gray-600">
+            <p className="mt-4 text-sm text-muted-foreground">
               Verifique sua caixa de entrada e também a pasta de spam.
             </p>
           </div>
@@ -95,8 +95,8 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-6 sm:space-y-8 p-6 sm:p-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900">
             Esqueceu sua senha?

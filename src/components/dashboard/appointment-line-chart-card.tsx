@@ -116,35 +116,35 @@ export function AppointmentLineChartCard({ data }: AppointmentLineChartCardProps
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
           <div className="flex items-center space-x-2">
-            <Calendar className="h-5 w-5 text-blue-600" />
-            <CardTitle className="text-lg font-semibold">
+            <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+            <CardTitle className="text-base sm:text-lg font-semibold">
               Agendamentos dos Últimos 30 Dias
             </CardTitle>
           </div>
-          <div className="flex items-center space-x-2 text-sm text-gray-600">
-            <TrendingUp className="h-4 w-4" />
+          <div className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm text-gray-600">
+            <TrendingUp className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span>Média: {averagePerDay}/dia</span>
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <div className="h-80 w-full">
+        <div className="h-64 sm:h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={chartData}
               margin={{
                 top: 5,
-                right: 30,
-                left: 20,
+                right: 10,
+                left: 0,
                 bottom: 5,
               }}
             >
               <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
               <XAxis 
                 dataKey="formattedDate"
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 10 }}
                 interval="preserveStartEnd"
               />
               <YAxis 

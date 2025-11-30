@@ -47,7 +47,7 @@ export default function EditScheduleModal({
             <select
               id="dayOfWeek"
               {...register("dayOfWeek")}
-              className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:border-ring focus:outline-none focus:ring-ring"
               required
             >
               {Object.entries(DAYS_OF_WEEK_LABELS).map(([value, label]) => (

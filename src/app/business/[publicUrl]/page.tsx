@@ -122,14 +122,14 @@ export default function ProviderPublicPage({ params }: ProviderPublicPageProps) 
         }}
       />
       
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="space-y-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
+        <div className="space-y-6 sm:space-y-8">
           {/* Informações do Prestador */}
           <ProviderInfo provider={provider} />
           
           {/* Lista de Serviços */}
-          <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 lg:p-8 shadow-sm">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
               Nossos Serviços
             </h2>
             <PublicServicesList services={provider.services} />
