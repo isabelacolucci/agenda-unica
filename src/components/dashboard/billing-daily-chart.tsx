@@ -48,18 +48,18 @@ const CustomTooltip = ({ active, payload }: TooltipProps) => {
           <p className="text-sm">
             <span className="font-medium text-blue-600">Realizado:</span>{' '}
             <span className="text-blue-600">{formatCurrency(dayData?.realized || 0)}</span>
-            {dayData?.completed > 0 && (
+            {(dayData?.completed ?? 0) > 0 && (
               <span className="text-xs text-gray-500 ml-1">
-                ({dayData.completed} {dayData.completed === 1 ? 'agendamento' : 'agendamentos'})
+                ({dayData?.completed} {dayData?.completed === 1 ? 'agendamento' : 'agendamentos'})
               </span>
             )}
           </p>
           <p className="text-sm">
             <span className="font-medium text-purple-600">Previsto:</span>{' '}
             <span className="text-purple-600">{formatCurrency(dayData?.predicted || 0)}</span>
-            {dayData?.scheduled > 0 && (
+            {(dayData?.scheduled ?? 0) > 0 && (
               <span className="text-xs text-gray-500 ml-1">
-                (+{dayData.scheduled} agendado{dayData.scheduled > 1 ? 's' : ''})
+                (+{dayData?.scheduled} agendado{dayData?.scheduled && dayData.scheduled > 1 ? 's' : ''})
               </span>
             )}
           </p>
