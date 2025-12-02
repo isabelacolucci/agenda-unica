@@ -7,18 +7,18 @@ async function main() {
   console.log('🌱 Starting seed...');
 
   // Hash the password
-  const hashedPassword = await bcrypt.hash('senha@123', 12);
+  const hashedPassword = await bcrypt.hash('123456', 12); // $2b$10$FLnWpjvibNzqQdrnMuQq3Oxxeu/mf/LjdUf6uf5BCnmM/2eS7G42i
 
   // Create provider (user)
   const provider = await prisma.provider.create({
     data: {
-      name: 'João Silva',
-      businessName: 'Salão do João',
-      publicUrl: 'joao-silva',
-      email: 'joao@mail.com',
+      name: 'Isabela Colucci',
+      businessName: 'Salão da Isa',
+      publicUrl: 'salao-da-isa',
+      email: 'isabelacolucci+testeAgenda@gmail.com',
       password: hashedPassword,
-      phone: '(11) 99999-9999',
-      address: 'Rua das Flores, 123 - São Paulo, SP',
+      phone: '(21) 99191-9191',
+      address: 'Rua Castro Alves, 86 - Rio de Janeiro, RJ',
     },
   });
 
