@@ -7,7 +7,6 @@ import { useBillingDaily } from "@/hooks/use-billing-daily"
 import { PublicUrlCard } from "./public-url-card"
 import { AppointmentStatsCard } from "./appointment-stats-card"
 import { BillingCard } from "./billing-card"
-import { AppointmentLineChartCard } from "./appointment-line-chart-card"
 import { BillingComparisonChart } from "./billing-comparison-chart"
 import { BillingDailyChart } from "./billing-daily-chart"
 import { DashboardSkeleton } from "./dashboard-skeleton"
@@ -17,7 +16,7 @@ import { RefreshCw, AlertCircle } from "lucide-react"
 export function DashboardContent() {
   const { data, loading, error, refetch } = useDashboardSummary()
   const { data: billingData, loading: billingLoading, error: billingError, refetch: refetchBilling } = useBillingData()
-  const { data: dailySummaryData, loading: dailySummaryLoading, error: dailySummaryError, refetch: refetchDailySummary } = useDashboardDailySummary()
+  const { loading: dailySummaryLoading, error: dailySummaryError, refetch: refetchDailySummary } = useDashboardDailySummary()
   const { data: billingDailyData, loading: billingDailyLoading, error: billingDailyError, refetch: refetchBillingDaily } = useBillingDaily()
 
   const handleRefetch = () => {
