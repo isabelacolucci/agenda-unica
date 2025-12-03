@@ -83,5 +83,6 @@ model Appointment {
   provider Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
   service  Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
+  @@unique([providerId, date, time], name: "unique_provider_datetime")
   @@map("appointments")
 }

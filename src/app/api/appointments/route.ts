@@ -148,6 +148,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Verificar se já existe um agendamento neste horário
+    const existingAppointment = await prisma.appointment.findFirst({
+      where: {
+        providerId: service.providerId,
+        date: new Date(date + 'T00:00:00'),
+        time,
+        status: {
+          in: ['scheduled', 'completed'] // Não considera cancelados ou no-show
+        }
+      }
+    })
+
+    if (existingAppointment) {
+      return NextResponse.json(
+        { error: "Já existe um agendamento para este horário" },
+        { status: 409 }
+      )
+    }
+
     // Criar o agendamento
     const appointment = await prisma.appointment.create({
       data: {
@@ -197,6 +216,15 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error("Erro ao criar agendamento:", error)
+    
+    // Tratar erro de constraint única do Prisma
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'P2002') {
+      return NextResponse.json(
+        { error: "Já existe um agendamento para este horário" },
+        { status: 409 }
+      )
+    }
+    
     return NextResponse.json(
       { error: "Erro interno do servidor" },
       { status: 500 }

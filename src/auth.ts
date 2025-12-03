@@ -66,34 +66,14 @@ export const { handlers, signIn, signOut, auth } = (NextAuth as any)({
   callbacks: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async jwt({ token, user }: any) {
+      // Apenas adiciona dados do usuário ao token no momento do login
+      // Não faz consultas ao banco para evitar problemas no edge runtime
       if (user) {
         token.id = user.id
+        token.name = user.name
+        token.email = user.email
         token.businessName = user.businessName
         token.publicUrl = user.publicUrl
-      }
-      
-      // Always fetch fresh data from database to ensure session is up-to-date
-      if (token.id) {
-        try {
-          const provider = await prisma.provider.findUnique({
-            where: { id: parseInt(token.id) },
-            select: {
-              name: true,
-              businessName: true,
-              publicUrl: true,
-              email: true,
-            },
-          })
-          
-          if (provider) {
-            token.name = provider.name
-            token.email = provider.email
-            token.businessName = provider.businessName
-            token.publicUrl = provider.publicUrl
-          }
-        } catch (error) {
-          console.error("Error fetching user data for token:", error)
-        }
       }
       
       return token
