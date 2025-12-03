@@ -94,11 +94,6 @@ export function DashboardContent() {
           <BillingDailyChart data={billingDailyData} />
         )}
       </div>
-
-      {/* Card do Gráfico de Agendamentos dos Últimos 30 Dias */}
-      {dailySummaryData && (
-        <AppointmentLineChartCard data={dailySummaryData} />
-      )}
     </div>
   )
 }
